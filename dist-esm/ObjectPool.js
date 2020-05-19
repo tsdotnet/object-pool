@@ -49,16 +49,11 @@ export default class ObjectPool extends DisposableBase {
         const p = this._pool;
         return (r ? r.length : 0) + (p ? p.length : 0);
     }
-    _recycle() {
-        const toRecycle = this._toRecycle;
-        if (!toRecycle)
-            return;
-        const recycler = this._recycler, pool = this._pool;
-        let item;
-        while ((item = toRecycle.pop())) {
-            recycler(item);
-            pool.push(item);
-        }
+    static create(generator, recycler, max = DEFAULT_MAX_SIZE) {
+        return new ObjectPool(generator, recycler, max);
+    }
+    static createAutoRecycled(generator, max = DEFAULT_MAX_SIZE) {
+        return new ObjectPool(generator, recycle, max);
     }
     trim(max) {
         this._cancelAutoTrim();
@@ -81,13 +76,6 @@ export default class ObjectPool extends DisposableBase {
         }
         // setup next default automatic trim.
         this.autoTrim();
-    }
-    _cancelAutoTrim() {
-        const tid = this._reduceTimeoutId;
-        if (tid) {
-            clearTimeout(tid);
-            this._reduceTimeoutId = 0;
-        }
     }
     autoTrim(msLater = AUTO_REDUCE_DEFAULT_MS, max = NaN) {
         if (this.wasDisposed) {
@@ -116,15 +104,6 @@ export default class ObjectPool extends DisposableBase {
      */
     dump() {
         return this.toArrayAndClear();
-    }
-    _onDispose() {
-        super._onDispose();
-        const _ = this;
-        _.clear();
-        _._generator = undefined;
-        _._recycler = undefined;
-        _._toRecycle = undefined;
-        _._pool = undefined;
     }
     give(entry) {
         const _ = this;
@@ -166,11 +145,32 @@ export default class ObjectPool extends DisposableBase {
             throw new ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
         return _.tryTake() || factory && factory() || _._generator();
     }
-    static create(generator, recycler, max = DEFAULT_MAX_SIZE) {
-        return new ObjectPool(generator, recycler, max);
+    _recycle() {
+        const toRecycle = this._toRecycle;
+        if (!toRecycle)
+            return;
+        const recycler = this._recycler, pool = this._pool;
+        let item;
+        while ((item = toRecycle.pop())) {
+            recycler(item);
+            pool.push(item);
+        }
     }
-    static createAutoRecycled(generator, max = DEFAULT_MAX_SIZE) {
-        return new ObjectPool(generator, recycle, max);
+    _cancelAutoTrim() {
+        const tid = this._reduceTimeoutId;
+        if (tid) {
+            clearTimeout(tid);
+            this._reduceTimeoutId = 0;
+        }
+    }
+    _onDispose() {
+        super._onDispose();
+        const _ = this;
+        _.clear();
+        _._generator = undefined;
+        _._recycler = undefined;
+        _._toRecycle = undefined;
+        _._pool = undefined;
     }
 }
 function recycle(e) {

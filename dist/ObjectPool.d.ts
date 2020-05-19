@@ -36,9 +36,9 @@ export default class ObjectPool<T> extends DisposableBase {
      * @returns {number}
      */
     get count(): number;
-    protected _recycle(): void;
+    static create<T>(generator?: (...args: any[]) => T, recycler?: (o: T) => void, max?: number): ObjectPool<T>;
+    static createAutoRecycled<T extends Recyclable>(generator?: (...args: any[]) => T, max?: number): ObjectPool<T>;
     trim(max?: number): void;
-    protected _cancelAutoTrim(): void;
     autoTrim(msLater?: number, max?: number): void;
     /**
      * Clears out the pool.
@@ -49,10 +49,10 @@ export default class ObjectPool<T> extends DisposableBase {
      * Shortcut for toArrayAndClear();
      */
     dump(): T[];
-    protected _onDispose(): void;
     give(entry: T): void;
     tryTake(): T | undefined;
     take(factory?: () => T): T;
-    static create<T>(generator?: (...args: any[]) => T, recycler?: (o: T) => void, max?: number): ObjectPool<T>;
-    static createAutoRecycled<T extends Recyclable>(generator?: (...args: any[]) => T, max?: number): ObjectPool<T>;
+    protected _recycle(): void;
+    protected _cancelAutoTrim(): void;
+    protected _onDispose(): void;
 }
