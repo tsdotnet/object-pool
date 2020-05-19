@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ObjectPool | @tsdotnet/object-pool - v1.0.1</title>
-	<meta name="description" content="Documentation for @tsdotnet/object-pool - v1.0.1">
+	<title>ObjectPool | @tsdotnet/object-pool - v1.0.2</title>
+	<meta name="description" content="Documentation for @tsdotnet/object-pool - v1.0.2">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@tsdotnet/object-pool - v1.0.1</a>
+					<a href="../index.html" class="title">@tsdotnet/object-pool - v1.0.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -134,6 +134,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_objectpool_.objectpool.html#dispose" class="tsd-kind-icon">dispose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_objectpool_.objectpool.html#dump" class="tsd-kind-icon">dump</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_objectpool_.objectpool.html#give" class="tsd-kind-icon">give</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_objectpool_.objectpool.html#rent" class="tsd-kind-icon">rent</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_objectpool_.objectpool.html#take" class="tsd-kind-icon">take</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_objectpool_.objectpool.html#throwifdisposed" class="tsd-kind-icon">throw<wbr>IfDisposed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_objectpool_.objectpool.html#toarrayandclear" class="tsd-kind-icon">to<wbr>Array<wbr>And<wbr>Clear</a></li>
@@ -159,7 +160,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides DisposableBase.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L31">src/ObjectPool.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L31">src/ObjectPool.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -226,7 +227,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L69">src/ObjectPool.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L69">src/ObjectPool.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +249,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L60">src/ObjectPool.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L60">src/ObjectPool.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +292,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L229">src/ObjectPool.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L280">src/ObjectPool.ts:280</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -309,7 +310,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides DisposableBase._onDispose</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L239">src/ObjectPool.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L290">src/ObjectPool.ts:290</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -326,7 +327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L216">src/ObjectPool.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L267">src/ObjectPool.ts:267</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -343,9 +344,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L122">src/ObjectPool.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L144">src/ObjectPool.ts:144</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Signals the pool to trim after a delay.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -353,6 +359,8 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> max: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = NaN</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -369,7 +377,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L137">src/ObjectPool.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L159">src/ObjectPool.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -409,7 +417,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L155">src/ObjectPool.ts:155</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L181">src/ObjectPool.ts:181</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -431,13 +439,68 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L160">src/ObjectPool.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L190">src/ObjectPool.ts:190</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gives an item to the pool.  If recyclable, will be added to the recycler.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>entry: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rent" class="tsd-anchor"></a>
+					<h3>rent</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rent<span class="tsd-signature-symbol">(</span>closure<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L260">src/ObjectPool.ts:260</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Short term renting of an item.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>closure: <span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>entry: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -454,9 +517,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L206">src/ObjectPool.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L246">src/ObjectPool.ts:246</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an item from the pool or creates one using the provided factory or the default factory configured with the pool.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -512,9 +580,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L142">src/ObjectPool.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L168">src/ObjectPool.ts:168</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Empties the pool into an array and returns it.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
@@ -529,13 +602,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L91">src/ObjectPool.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L108">src/ObjectPool.ts:108</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Trims the pool to the optional specified max (or the default).</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> max: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -552,9 +632,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L193">src/ObjectPool.ts:193</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L228">src/ObjectPool.ts:228</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Attempts to get an item from the pool.
+									Returns undefined if none available.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 						</li>
 					</ul>
@@ -569,9 +655,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L76">src/ObjectPool.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L83">src/ObjectPool.ts:83</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a pool using the specified generator and optional recycler.</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -604,9 +695,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/f2f37e7/src/ObjectPool.ts#L84">src/ObjectPool.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/tsdotnet/object-pool/blob/70a455c/src/ObjectPool.ts#L97">src/ObjectPool.ts:97</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an auto-recycled pool using the specified generator.</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -684,6 +780,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_objectpool_.objectpool.html#give" class="tsd-kind-icon">give</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_objectpool_.objectpool.html#rent" class="tsd-kind-icon">rent</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_objectpool_.objectpool.html#take" class="tsd-kind-icon">take</a>
