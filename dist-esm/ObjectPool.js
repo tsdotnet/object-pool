@@ -49,12 +49,29 @@ export default class ObjectPool extends DisposableBase {
         const p = this._pool;
         return (r ? r.length : 0) + (p ? p.length : 0);
     }
+    /**
+     * Creates a pool using the specified generator and optional recycler.
+     * @param {(...args: any[]) => T} generator
+     * @param {(o: T) => void} recycler
+     * @param {number} max
+     * @return {ObjectPool<T>}
+     */
     static create(generator, recycler, max = DEFAULT_MAX_SIZE) {
         return new ObjectPool(generator, recycler, max);
     }
+    /**
+     * Creates an auto-recycled pool using the specified generator.
+     * @param {(...args: any[]) => T} generator
+     * @param {number} max
+     * @return {ObjectPool<T>}
+     */
     static createAutoRecycled(generator, max = DEFAULT_MAX_SIZE) {
         return new ObjectPool(generator, recycle, max);
     }
+    /**
+     * Trims the pool to the optional specified max (or the default).
+     * @param {number} max
+     */
     trim(max) {
         this._cancelAutoTrim();
         this._recycle();
@@ -77,6 +94,11 @@ export default class ObjectPool extends DisposableBase {
         // setup next default automatic trim.
         this.autoTrim();
     }
+    /**
+     * Signals the pool to trim after a delay.
+     * @param {number} msLater
+     * @param {number} max
+     */
     autoTrim(msLater = AUTO_REDUCE_DEFAULT_MS, max = NaN) {
         if (this.wasDisposed) {
             this.trim(0);
@@ -91,6 +113,10 @@ export default class ObjectPool extends DisposableBase {
     clear() {
         this.trim(0);
     }
+    /**
+     * Empties the pool into an array and returns it.
+     * @return {T[]}
+     */
     toArrayAndClear() {
         this.throwIfDisposed();
         this._cancelAutoTrim();
@@ -105,6 +131,10 @@ export default class ObjectPool extends DisposableBase {
     dump() {
         return this.toArrayAndClear();
     }
+    /**
+     * Gives an item to the pool.  If recyclable, will be added to the recycler.
+     * @param {T} entry
+     */
     give(entry) {
         const _ = this;
         _.throwIfDisposed();
@@ -129,6 +159,11 @@ export default class ObjectPool extends DisposableBase {
             _.autoTrim();
         }
     }
+    /**
+     * Attempts to get an item from the pool.
+     * Returns undefined if none available.
+     * @return {T | undefined}
+     */
     tryTake() {
         const _ = this;
         _.throwIfDisposed();
@@ -138,12 +173,26 @@ export default class ObjectPool extends DisposableBase {
         }
         return entry;
     }
+    /**
+     * Returns an item from the pool or creates one using the provided factory or the default factory configured with the pool.
+     * @param {() => T} factory
+     * @return {T}
+     */
     take(factory) {
         const _ = this;
         _.throwIfDisposed();
         if (!_._generator && !factory)
             throw new ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
         return _.tryTake() || factory && factory() || _._generator();
+    }
+    /**
+     * Short term renting of an item.
+     * @param {(entry: T) => void} closure
+     */
+    rent(closure) {
+        const e = this.take();
+        closure(e);
+        this.give(e);
     }
     _recycle() {
         const toRecycle = this._toRecycle;

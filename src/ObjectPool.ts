@@ -73,6 +73,13 @@ export default class ObjectPool<T>
 		return (r ? r.length : 0) + (p ? p.length : 0);
 	}
 
+	/**
+	 * Creates a pool using the specified generator and optional recycler.
+	 * @param {(...args: any[]) => T} generator
+	 * @param {(o: T) => void} recycler
+	 * @param {number} max
+	 * @return {ObjectPool<T>}
+	 */
 	static create<T> (
 		generator?: (...args: any[]) => T,
 		recycler?: (o: T) => void,
@@ -81,6 +88,12 @@ export default class ObjectPool<T>
 		return new ObjectPool<T>(generator, recycler, max);
 	}
 
+	/**
+	 * Creates an auto-recycled pool using the specified generator.
+	 * @param {(...args: any[]) => T} generator
+	 * @param {number} max
+	 * @return {ObjectPool<T>}
+	 */
 	static createAutoRecycled<T extends Recyclable> (
 		generator?: (...args: any[]) => T,
 		max: number = DEFAULT_MAX_SIZE): ObjectPool<T>
@@ -88,6 +101,10 @@ export default class ObjectPool<T>
 		return new ObjectPool<T>(generator, recycle, max);
 	}
 
+	/**
+	 * Trims the pool to the optional specified max (or the default).
+	 * @param {number} max
+	 */
 	trim (max?: number): void
 	{
 		this._cancelAutoTrim();
@@ -119,6 +136,11 @@ export default class ObjectPool<T>
 		this.autoTrim();
 	}
 
+	/**
+	 * Signals the pool to trim after a delay.
+	 * @param {number} msLater
+	 * @param {number} max
+	 */
 	autoTrim (msLater: number = AUTO_REDUCE_DEFAULT_MS, max: number = NaN): void
 	{
 		if(this.wasDisposed)
@@ -139,6 +161,10 @@ export default class ObjectPool<T>
 		this.trim(0);
 	}
 
+	/**
+	 * Empties the pool into an array and returns it.
+	 * @return {T[]}
+	 */
 	toArrayAndClear (): T[]
 	{
 		this.throwIfDisposed();
@@ -157,6 +183,10 @@ export default class ObjectPool<T>
 		return this.toArrayAndClear();
 	}
 
+	/**
+	 * Gives an item to the pool.  If recyclable, will be added to the recycler.
+	 * @param {T} entry
+	 */
 	give (entry: T): void
 	{
 		const _ = this;
@@ -190,6 +220,11 @@ export default class ObjectPool<T>
 		}
 	}
 
+	/**
+	 * Attempts to get an item from the pool.
+	 * Returns undefined if none available.
+	 * @return {T | undefined}
+	 */
 	tryTake (): T | undefined
 	{
 		const _ = this;
@@ -203,6 +238,11 @@ export default class ObjectPool<T>
 		return entry;
 	}
 
+	/**
+	 * Returns an item from the pool or creates one using the provided factory or the default factory configured with the pool.
+	 * @param {() => T} factory
+	 * @return {T}
+	 */
 	take (factory?: () => T): T
 	{
 		const _ = this;
@@ -211,6 +251,17 @@ export default class ObjectPool<T>
 			throw new ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
 
 		return _.tryTake() || factory && factory() || _._generator!();
+	}
+
+	/**
+	 * Short term renting of an item.
+	 * @param {(entry: T) => void} closure
+	 */
+	rent (closure: (entry: T) => void): void
+	{
+		const e = this.take();
+		closure(e);
+		this.give(e);
 	}
 
 	protected _recycle (): void
