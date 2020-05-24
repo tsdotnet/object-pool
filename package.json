@@ -1,6 +1,6 @@
 {
   "name": "@tsdotnet/object-pool",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A flexible Object Pool that trims the pool down to the specified max size after a specified delay.",
   "author": "electricessence",
   "license": "MIT",
