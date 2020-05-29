@@ -1,5 +1,5 @@
 dependencies:
-  '@tsdotnet/disposable': 1.1.19
+  '@tsdotnet/disposable': 1.1.20
   '@tsdotnet/exceptions': 1.0.16
   tslib: 2.0.0
 devDependencies:
@@ -204,12 +204,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
-  /@tsdotnet/disposable/1.1.19:
+  /@tsdotnet/disposable/1.1.20:
     dependencies:
       tslib: 2.0.0
     dev: false
     resolution:
-      integrity: sha512-2DGtUvkiR1/h2mmES97BLb2zBgRaYQbUnk/YcYG5rmdKjHgZVKcPwd+exMZTxY5mLi4mQCbsS/BmSxEKqg2Uag==
+      integrity: sha512-zzVzRqoDoduZM2X6sus83Cbb7BSi6mNVok/cFxVWiT9SZa2qiy/PDgLoPcePZ/gwaZnHB7YWU9NNUcWSMb6keg==
   /@tsdotnet/exceptions/1.0.16:
     dependencies:
       tslib: 2.0.0
@@ -3032,7 +3032,7 @@ packages:
     resolution:
       integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 specifiers:
-  '@tsdotnet/disposable': ^1.1.19
+  '@tsdotnet/disposable': ^1.1.20
   '@tsdotnet/exceptions': ^1.0.16
   '@types/chai': ^4.2.11
   '@types/mocha': ^7.0.2
