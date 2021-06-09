@@ -1,6 +1,6 @@
 dependencies:
-  '@tsdotnet/disposable': 1.1.22
-  '@tsdotnet/exceptions': 1.0.17
+  '@tsdotnet/disposable': link:../disposable
+  '@tsdotnet/exceptions': link:../exceptions
   tslib: 2.2.0
 devDependencies:
   '@types/chai': 4.2.18
@@ -278,18 +278,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-FTgBI767POY/lKNDNbIzgAX6miIDBs6NTCbdlDb8TrWovHsSvaVIZDlTqym29C6UqhzwcJx4CYr+AlrMywA0cA==
-  /@tsdotnet/disposable/1.1.22:
-    dependencies:
-      tslib: 2.2.0
-    dev: false
-    resolution:
-      integrity: sha512-y1WhVJHJ9dusKf4FQcnhT8iSQJlzMkWcJFyJjXV2L1xjxnC03mDnGKNhFTSuJnPrnivxwhPUiY3jgdWS6l/E/Q==
-  /@tsdotnet/exceptions/1.0.17:
-    dependencies:
-      tslib: 2.2.0
-    dev: false
-    resolution:
-      integrity: sha512-+xTpTdAy8+7F3k2KMjvds9UWpLbW+9Q6sLhOxfm7GvEsDKBugb9JYM5CoEKADOoR9+tLn8xT7qwTu+lcmnJ5LA==
   /@types/chai/4.2.18:
     dev: true
     resolution:
