@@ -7,10 +7,10 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const disposable_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/disposable"));
-const dispose_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/disposable/dist/dispose"));
-const ArgumentException_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/exceptions/dist/ArgumentException"));
-const ArgumentOutOfRangeException_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/exceptions/dist/ArgumentOutOfRangeException"));
+const disposable_1 = tslib_1.__importDefault(require("@tsdotnet/disposable"));
+const dispose_1 = tslib_1.__importDefault(require("@tsdotnet/disposable/dist/dispose"));
+const ArgumentException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentException"));
+const ArgumentOutOfRangeException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentOutOfRangeException"));
 const OBJECT_POOL = 'ObjectPool', DEFAULT_MAX_SIZE = 100, ABSOLUTE_MAX_SIZE = 65536, AUTO_REDUCE_DEFAULT_MS = 1000; // auto reduce milliseconds.
 /**
  * A flexible Object Pool that trims the pool down to the specified max size after a specified delay.

@@ -5,7 +5,7 @@
  * Uses .add(T) and .take():T
  */
 import DisposableBase from '@tsdotnet/disposable';
-export declare type Recyclable = {
+export type Recyclable = {
     recycle(): void;
 };
 /**
