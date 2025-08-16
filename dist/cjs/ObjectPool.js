@@ -1,18 +1,18 @@
+"use strict";
 /*!
  * @author electricessence / https://github.com/electricessence/
  * Licensing: MIT https://github.com/electricessence/TypeScript.NET-Core/blob/master/LICENSE.md
  * Based upon ObjectPool from Parallel Extension Extras and other ObjectPool implementations.
  * Uses .add(T) and .take():T
  */
-import DisposableBase from '@tsdotnet/disposable';
-import dispose from '@tsdotnet/disposable/dist/dispose';
-import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
-import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
+Object.defineProperty(exports, "__esModule", { value: true });
+const disposable_1 = require("@tsdotnet/disposable");
+const exceptions_1 = require("@tsdotnet/exceptions");
 const OBJECT_POOL = 'ObjectPool', DEFAULT_MAX_SIZE = 100, ABSOLUTE_MAX_SIZE = 65536, AUTO_REDUCE_DEFAULT_MS = 1000; // auto reduce milliseconds.
 /**
  * A flexible Object Pool that trims the pool down to the specified max size after a specified delay.
  */
-export default class ObjectPool extends DisposableBase {
+class ObjectPool extends disposable_1.DisposableBase {
     /**
      * A transient amount of object to exist over _maxSize until trim() is called.
      * But any added objects over _localAbsMaxSize will be disposed immediately.
@@ -27,9 +27,9 @@ export default class ObjectPool extends DisposableBase {
         this._maxSize = _maxSize;
         this._reduceTimeoutId = 0; // possible differences between browser and NodeJS.  Keep as 'any'.
         if (isNaN(_maxSize) || _maxSize < 1)
-            throw new ArgumentOutOfRangeException('_maxSize', _maxSize, 'Must be at valid number least 1.');
+            throw new exceptions_1.ArgumentOutOfRangeException('_maxSize', _maxSize, 'Must be at valid number least 1.');
         if (_maxSize > ABSOLUTE_MAX_SIZE)
-            throw new ArgumentOutOfRangeException('_maxSize', _maxSize, `Must be less than or equal to ${ABSOLUTE_MAX_SIZE}.`);
+            throw new exceptions_1.ArgumentOutOfRangeException('_maxSize', _maxSize, `Must be less than or equal to ${ABSOLUTE_MAX_SIZE}.`);
         this._toRecycle = _recycler ? [] : undefined;
         this._pool = [];
     }
@@ -83,13 +83,13 @@ export default class ObjectPool extends DisposableBase {
             Math.floor(pool.length / 2) - 1); // continue to reduce to zero over time.
         }
         if (max <= 0) {
-            dispose.these.unsafe(pool, true);
+            disposable_1.dispose.these.unsafe(pool, true);
             pool.length = 0;
             return; // all clear.
         }
         // Can only be here if max is greater than and so is the length.
         while (pool.length > max) {
-            dispose.single(pool.pop(), true);
+            disposable_1.dispose.single(pool.pop(), true);
         }
         // setup next default automatic trim.
         this.autoTrim();
@@ -182,7 +182,7 @@ export default class ObjectPool extends DisposableBase {
         const _ = this;
         _.throwIfDisposed();
         if (!_._generator && !factory)
-            throw new ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
+            throw new exceptions_1.ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
         return _.tryTake() || factory && factory() || _._generator();
     }
     /**
@@ -222,6 +222,7 @@ export default class ObjectPool extends DisposableBase {
         _._pool = undefined;
     }
 }
+exports.default = ObjectPool;
 function recycle(e) {
     e.recycle();
 }

@@ -5,10 +5,8 @@
  * Uses .add(T) and .take():T
  */
 
-import DisposableBase from '@tsdotnet/disposable';
-import dispose from '@tsdotnet/disposable/dist/dispose';
-import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
-import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
+import {DisposableBase, dispose} from '@tsdotnet/disposable';
+import {ArgumentException, ArgumentOutOfRangeException} from '@tsdotnet/exceptions';
 
 const
 	OBJECT_POOL            = 'ObjectPool',

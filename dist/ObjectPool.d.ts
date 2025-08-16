@@ -4,7 +4,7 @@
  * Based upon ObjectPool from Parallel Extension Extras and other ObjectPool implementations.
  * Uses .add(T) and .take():T
  */
-import DisposableBase from '@tsdotnet/disposable';
+import { DisposableBase } from '@tsdotnet/disposable';
 export type Recyclable = {
     recycle(): void;
 };
