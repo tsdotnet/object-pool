@@ -24,7 +24,7 @@ export default class ObjectPool<T>
 {
 
 	// noinspection TypeScriptFieldCanBeMadeReadonly
-	private _toRecycle?: T[];
+	private _toRecycle?: T[] | undefined;
 	private _pool: T[];
 	private _reduceTimeoutId: any = 0; // possible differences between browser and NodeJS.  Keep as 'any'.
 
