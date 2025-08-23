@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import ObjectPool from '../src/ObjectPool';
+import { ObjectDisposedException } from '@tsdotnet/disposable';
 
 // Test object that implements recyclable
 class TestObject {
@@ -273,6 +274,19 @@ describe('ObjectPool', () => {
 			expect(() => pool.give(new TestObject())).toThrow();
 			expect(() => pool.take()).toThrow();
 			expect(() => pool.tryTake()).toThrow();
+		});
+		
+		it('should throw ObjectDisposedException with correct objectName when disposed', () => {
+			const pool = new ObjectPool<TestObject>();
+			pool.dispose();
+			
+			try {
+				pool.give(new TestObject());
+				expect.fail('Should have thrown');
+			} catch (error) {
+				expect(error).toBeInstanceOf(ObjectDisposedException);
+				expect((error as ObjectDisposedException).objectName).toBe('ObjectPool');
+			}
 		});
 		
 		it('should clear pool and cancel timers on disposal', () => {

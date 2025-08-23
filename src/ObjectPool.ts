@@ -9,7 +9,6 @@ import {DisposableBase, dispose} from '@tsdotnet/disposable';
 import {ArgumentException, ArgumentOutOfRangeException} from '@tsdotnet/exceptions';
 
 const
-	OBJECT_POOL            = 'ObjectPool',
 	DEFAULT_MAX_SIZE       = 100,
 	ABSOLUTE_MAX_SIZE      = 65536,
 	AUTO_REDUCE_DEFAULT_MS = 1000; // auto reduce milliseconds.
@@ -41,7 +40,7 @@ export default class ObjectPool<T>
 		private _recycler?: (o: T) => void,
 		private readonly _maxSize: number = DEFAULT_MAX_SIZE)
 	{
-		super(OBJECT_POOL);
+		super();
 		if(isNaN(_maxSize) || _maxSize<1)
 			throw new ArgumentOutOfRangeException('_maxSize', _maxSize, 'Must be at valid number least 1.');
 		if(_maxSize>ABSOLUTE_MAX_SIZE)
@@ -165,7 +164,7 @@ export default class ObjectPool<T>
 	 */
 	toArrayAndClear (): T[]
 	{
-		this.throwIfDisposed();
+		this.assertIsAlive();
 		this._cancelAutoTrim();
 		this._recycle();
 		const p = this._pool;
@@ -188,7 +187,7 @@ export default class ObjectPool<T>
 	give (entry: T): void
 	{
 		const _ = this;
-		_.throwIfDisposed();
+		_.assertIsAlive();
 		if(entry==null)
 		{
 			console.warn('Attempting to add', entry, 'to an ObjectPool.');
@@ -226,7 +225,7 @@ export default class ObjectPool<T>
 	tryTake (): T | undefined
 	{
 		const _ = this;
-		_.throwIfDisposed();
+		_.assertIsAlive();
 
 		let entry = _._pool.pop();
 		if(!entry && _._toRecycle && (entry = _._toRecycle.pop()))
@@ -244,7 +243,7 @@ export default class ObjectPool<T>
 	take (factory?: () => T): T
 	{
 		const _ = this;
-		_.throwIfDisposed();
+		_.assertIsAlive();
 		if(!_._generator && !factory)
 			throw new ArgumentException('factory', 'Must provide a factory if on was not provided at construction time.');
 
