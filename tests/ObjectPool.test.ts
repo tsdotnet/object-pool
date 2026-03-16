@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import ObjectPool from '../src/ObjectPool';
+import ObjectPool from '../src/ObjectPool.js';
 import { ObjectDisposedException } from '@tsdotnet/disposable';
 
 // Test object that implements recyclable
