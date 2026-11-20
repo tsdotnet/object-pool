@@ -1,4 +1,4 @@
-<a href="https://tsdotnet.github.io/object-pool/"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/object-pool@master/assets/banner.svg" alt="@tsdotnet/object-pool: Reuse, don’t reallocate. A pool for objects that are costly."></a>
+<a name="banner"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/object-pool@master/assets/banner.svg" alt="@tsdotnet/object-pool: Reuse, don’t reallocate. A pool for objects that are costly."></a>
 
 [![npm version](https://img.shields.io/npm/v/@tsdotnet/object-pool.svg?style=flat-square)](https://www.npmjs.com/package/@tsdotnet/object-pool)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tsdotnet/object-pool/blob/master/LICENSE)
