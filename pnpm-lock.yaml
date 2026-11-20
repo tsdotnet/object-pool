@@ -35,8 +35,8 @@ importers:
   .:
     dependencies:
       '@tsdotnet/disposable':
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.1.1
+        version: 2.1.1
       '@tsdotnet/exceptions':
         specifier: ^1.3.0
         version: 1.3.0
@@ -693,8 +693,8 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@tsdotnet/disposable@2.1.0':
-    resolution: {integrity: sha512-Zo/hvGcAhsv4CQhiaUGT/Q6cBDbb5d0KHr0Cz2j9NUCJtKMCCy+sOtq0pn77rm5KoudAjRODv+R6XvWTKcMUDA==}
+  '@tsdotnet/disposable@2.1.1':
+    resolution: {integrity: sha512-GVhMLQPM9GUFZtyIm3YWcKJKjnf0q5yd/V/mNpFiqDbKvWh64uCVU6lirPl6Izb9/LXc2Qgxn86cQxhpDD1ylg==}
 
   '@tsdotnet/exceptions@1.3.0':
     resolution: {integrity: sha512-hL2tCtdlPaEZO/pZ/57DIHMt80Iex3s7ooyH1br/zvGFMB6ms0XzMnBPhzVvgjZjEgGtbtRAsyG6VWjePpY+0w==}
@@ -2124,7 +2124,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@tsdotnet/disposable@2.1.0':
+  '@tsdotnet/disposable@2.1.1':
     dependencies:
       tslib: 2.9.1
 
